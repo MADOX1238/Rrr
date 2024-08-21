@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرحبا بك</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding-top: 50px; }
+        #welcome { margin-bottom: 20px; }
+        #name-input { padding: 10px; width: 300px; margin-bottom: 20px; border: 1px solid #ddd; }
+        #enter-btn { padding: 10px 20px; background-color: #007bff; color: #fff; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div id="welcome">
+    <h1>مرحبا بك في الدردشة العامة</h1>
+    <input type="text" id="name-input" placeholder="ادخل اسمك">
+    <br>
+    <button id="enter-btn">الدخول للدردشة</button>
+</div>
+
+<script>
+    document.getElementById('enter-btn').addEventListener('click', () => {
+        const username = document.getElementById('name-input').value.trim();
+        if (username) {
+            localStorage.setItem('username', username);
+            localStorage.setItem('userColor', getRandomColor());
+            window.location.href = 'chat.html';
+        } else {
+            alert('يرجى إدخال اسمك');
+        }
+    });
+
+    // دالة لتوليد لون عشوائي
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
+
+
+</body></html>
